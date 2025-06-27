@@ -5,104 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MINI 이벤트 상세</title>
   <style>
-    @font-face {
-      font-family: 'BMWTypeNextKr';
-      src: local('BMWTypeNextKr'), url('https://yourcdn.com/fonts/BMWTypeNextKr.woff2') format('woff2'); /* 폰트 경로 교체 필요 */
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      padding-bottom: 72px; /* 하단 버튼 공간 확보 */
-      font-family: 'BMWTypeNextKr', 'Noto Sans KR', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       background-color: #fff;
       color: #111;
-      font-size: 3.2vw; /* 반응형 폰트 사이즈 (390 기준 약 12.5px) */
     }
-
     .container {
       max-width: 480px;
       margin: 0 auto;
       padding: 16px;
     }
-
     .header {
-      font-size: 4.5vw;
+      font-size: 20px;
       font-weight: 600;
       text-align: center;
       margin-bottom: 12px;
     }
-
     .image-box img {
       width: 100%;
       border-radius: 8px;
     }
-
     .title {
-      font-size: 4vw;
+      font-size: 18px;
       font-weight: 700;
       margin-top: 16px;
       line-height: 1.4;
     }
-
     .subtitle {
-      font-size: 3.2vw;
+      font-size: 14px;
       color: #555;
       margin-top: 8px;
     }
-
     .date {
-      font-size: 3vw;
+      font-size: 13px;
       color: #777;
       margin-top: 8px;
     }
-
     .promo-banner {
       margin: 24px 0;
       border: 3px solid #1a7fa2;
       border-radius: 10px;
       overflow: hidden;
     }
-
     .promo-banner img {
       width: 100%;
       display: block;
     }
-
-    .footer-btn {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      padding: 8px 0;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-
     .btn {
-      width: 89.2vw; /* 390 기준 348px → 348/390 = 약 89.2% */
-      height: 14.36vw; /* 390 기준 56px → 56/390 = 약 14.36% */
-      max-width: 348px;
-      max-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
+      width: 100%;
+      padding: 14px 0;
       text-align: center;
-      font-size: 3.2vw;
+      font-size: 16px;
       font-weight: bold;
       color: #fff;
       background-color: #005b7f;
       border: none;
       border-radius: 6px;
       text-decoration: none;
+      margin-top: 12px;
     }
   </style>
 </head>
@@ -111,7 +73,7 @@
     <div class="header">이벤트 상세</div>
 
     <div class="image-box">
-      <img src="https://mini.co.kr/ko_KR/home/_jcr_content/root/container/container/image.coreimg.jpeg/1718941802767/mini-cooper.jpeg" alt="MINI Cooper">
+      <img src="Cooper.png" alt="MINI Cooper">
     </div>
 
     <div class="title">MINI Vantage 출시 기념<br>THE MINI COOPER C 프로모션.</div>
@@ -119,11 +81,9 @@
     <div class="date">2025.06.23 - 2025.07.15</div>
 
     <div class="promo-banner">
-      <img src="https://mini.co.kr/ko_KR/home/_jcr_content/root/container/container/image.coreimg.jpeg/1718941802767/mini-cooper.jpeg" alt="MINI Promo Banner">
+      <img src="banner.png" alt="MINI Promo Banner">
     </div>
-  </div>
 
-  <div class="footer-btn">
     <a href="#" class="btn">이벤트 참여하기</a>
   </div>
 </body>
