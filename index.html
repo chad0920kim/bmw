@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MINI 이벤트 상세</title>
+  <title>BMW × 투어비스 셀렉트 콜라보 이벤트</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Noto Sans KR', sans-serif;
@@ -51,13 +49,12 @@
     }
     .promo-banner {
       margin: 24px 0;
-      border: 3px solid #1a7fa2;
-      border-radius: 10px;
       overflow: hidden;
     }
     .promo-banner img {
       width: 100%;
       display: block;
+      border-radius: 8px;
     }
     .dummy-text {
       font-size: 14px;
@@ -71,7 +68,7 @@
       left: 0;
       right: 0;
       padding: 12px 16px;
-      background-color: #fff; /* 지문영역과 동일하게 흰색 */
+      background-color: #fff;
       z-index: 1000;
     }
     .btn {
@@ -90,57 +87,52 @@
   </style>
 </head>
 <body>
-  <!-- 스크롤 되는 영역 -->
   <div class="content">
     <div class="header">이벤트 상세</div>
 
     <div class="image-box">
-      <img src="Cooper.png" alt="MINI Cooper">
+      <!-- BMW 자동차 이미지 -->
+      <img src="https://www.bmwusa.com/content/dam/bmwusa/M/M5/MY25/M5-Touring-Overview/m5-touring-overview-01.jpg" alt="BMW M5 Touring">
     </div>
 
-    <div class="title">MINI Vantage 출시 기념<br>THE MINI COOPER C 프로모션.</div>
-    <div class="subtitle">특별한 혜택과 함께 시작하는 MINI 라이프.</div>
-    <div class="date">2025.06.23 - 2025.07.15</div>
+    <div class="title">BMW와 투어비스 셀렉트가 협업한<br>프리미엄 여행 패키지 이벤트</div>
+    <div class="subtitle">럭셔리 드라이브 & 프리미엄 호텔을 함께 경험하세요.</div>
+    <div class="date">2025.07.01 - 2025.08.31</div>
 
     <div class="promo-banner">
-      <img src="banner.png" alt="MINI Promo Banner">
+      <!-- 투어비스 셀렉트 서비스 이미지 -->
+      <img src="https://luxury-select.co.kr/_jcr_content/root/container/image.coreimg.jpeg/…" alt="Tourvis Select Luxury">
     </div>
 
     <div class="dummy-text">
-      MINI를 타고 떠나는 여행은 늘 특별합니다. <br><br>
-      이번 프로모션은 새로운 시작을 위한 완벽한 기회!<br>
-      지금 바로 참여하시고, 다양한 혜택을 확인해보세요.<br><br>
-      📌 프로모션 주요 혜택<br>
-      - 사은품 증정<br>
-      - 시승 기회 제공<br>
-      - 특별 금융 프로그램<br>
-      - 스마트 컨시어지 서비스<br><br>
-      🚗 더 자세한 정보는 이벤트 참여 후 확인할 수 있습니다.<br><br>
-      🎉 MINI와 함께 라이프 스타일을 새롭게 시작하세요!
+      BMW의 최신 M5 Touring을 타고 특별히 엄선된 투어비스 셀렉트 럭셔리 호텔로 떠나는 프리미엄 여행 패키지입니다.<br><br>
+      📌 **이벤트 혜택 안내**<br>
+      - BMW M5 Touring 2박 시승 프로그램<br>
+      - 투어비스 셀렉트 제공 5성급 호텔 2박 숙박<br>
+      - 호텔 전용 $100 식음료 크레딧 제공 :contentReference[oaicite:1]{index=1}<br>
+      - 무료 조식, 얼리 체크인 · 레이트 체크아웃 혜택 :contentReference[oaicite:2]{index=2}<br><br>
+      📅 **예약 가능 기간**: 2025년 7월 1일 ~ 8월 31일<br>
+      🚗 **여행 일정**: BMW 시승 → 호텔 라이프 → 자유 여행 (1박 이상 필수 이용)<br><br>
+      ✔️ 투어비스 셀렉트는 컨시어지 1:1 상담을 통해 예약 진행됩니다 :contentReference[oaicite:3]{index=3}<br>
+      ✔️ 결제는 호텔 체크아웃 시 **후불 방식**, 선결제 부담 없습니다 :contentReference[oaicite:4]{index=4}<br><br>
+      🎉 이 기회를 통해 BMW의 성능과 투어비스 셀렉트의 럭셔리 서비스를 동시에 경험해보세요!
     </div>
-    <div style="height: 100px;"></div> <!-- 하단 버튼 가려지지 않도록 여유 공간 -->
+
+    <div style="height: 100px;"></div>
   </div>
 
-  <!-- 고정 버튼 영역 -->
   <div class="footer">
     <a href="#" class="btn" onclick="chatbotClick()">이벤트 참여하기</a>
   </div>
+
+  <!-- Zendesk 챗봇 위젯 -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8ec3f23d-e418-4c7b-960e-3708cc88dd6a"></script>
+  <script>
+    zE('messenger','close');
+    function chatbotClick(event) {
+      event.preventDefault();
+      zE('messenger','open');
+    }
+  </script>
 </body>
-<!-- Start of bmwselect Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8ec3f23d-e418-4c7b-960e-3708cc88dd6a"> </script>
-<!-- End of bmwselect Zendesk Widget script -->
-  
-<script>
-  // 페이지 로드 시 닫기
-  zE('messenger', 'close')
-
-  // 챗봇 클릭 시
-  function chatbotClick() {
-    event.preventDefault()
-
-    // 위젯 오픈
-    zE('messenger', 'open')
-  }
-</script>
-
 </html>
