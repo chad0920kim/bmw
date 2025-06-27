@@ -123,7 +123,24 @@
 
   <!-- 고정 버튼 영역 -->
   <div class="footer">
-    <a href="#" class="btn">이벤트 참여하기</a>
+    <a href="#" class="btn" onclick="chatbotClick()">이벤트 참여하기</a>
   </div>
 </body>
+<!-- Start of bmwselect Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8ec3f23d-e418-4c7b-960e-3708cc88dd6a"> </script>
+<!-- End of bmwselect Zendesk Widget script -->
+  
+<script>
+  // 페이지 로드 시 닫기
+  zE('messenger', 'close')
+
+  // 챗봇 클릭 시
+  function chatbotClick() {
+    event.preventDefault()
+
+    // 위젯 오픈
+    zE('messenger', 'open')
+  }
+</script>
+
 </html>
