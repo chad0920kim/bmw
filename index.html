@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MINI 이벤트 상세</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Noto Sans KR', sans-serif;
@@ -14,7 +17,14 @@
     .container {
       max-width: 480px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
       padding: 16px;
+      overflow-y: auto;
     }
     .header {
       font-size: 20px;
@@ -52,6 +62,17 @@
       width: 100%;
       display: block;
     }
+    .dummy-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+      margin-top: 24px;
+    }
+    .footer {
+      padding: 12px 16px;
+      border-top: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
     .btn {
       display: block;
       width: 100%;
@@ -64,27 +85,45 @@
       border: none;
       border-radius: 6px;
       text-decoration: none;
-      margin-top: 12px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">이벤트 상세</div>
+    <!-- 스크롤 되는 영역 -->
+    <div class="content">
+      <div class="header">이벤트 상세</div>
 
-    <div class="image-box">
-      <img src="Cooper.png" alt="MINI Cooper">
+      <div class="image-box">
+        <img src="Cooper.png" alt="MINI Cooper">
+      </div>
+
+      <div class="title">MINI Vantage 출시 기념<br>THE MINI COOPER C 프로모션.</div>
+      <div class="subtitle">특별한 혜택과 함께 시작하는 MINI 라이프.</div>
+      <div class="date">2025.06.23 - 2025.07.15</div>
+
+      <div class="promo-banner">
+        <img src="banner.png" alt="MINI Promo Banner">
+      </div>
+
+      <div class="dummy-text">
+        MINI를 타고 떠나는 여행은 늘 특별합니다. <br><br>
+        이번 프로모션은 새로운 시작을 위한 완벽한 기회!<br>
+        지금 바로 참여하시고, 다양한 혜택을 확인해보세요.<br><br>
+        📌 프로모션 주요 혜택<br>
+        - 사은품 증정<br>
+        - 시승 기회 제공<br>
+        - 특별 금융 프로그램<br>
+        - 스마트 컨시어지 서비스<br><br>
+        🚗 더 자세한 정보는 이벤트 참여 후 확인할 수 있습니다.<br><br>
+        🎉 MINI와 함께 라이프 스타일을 새롭게 시작하세요!
+      </div>
     </div>
 
-    <div class="title">MINI Vantage 출시 기념<br>THE MINI COOPER C 프로모션.</div>
-    <div class="subtitle">특별한 혜택과 함께 시작하는 MINI 라이프.</div>
-    <div class="date">2025.06.23 - 2025.07.15</div>
-
-    <div class="promo-banner">
-      <img src="banner.png" alt="MINI Promo Banner">
+    <!-- 고정 버튼 영역 -->
+    <div class="footer">
+      <a href="#" class="btn">이벤트 참여하기</a>
     </div>
-
-    <a href="#" class="btn">이벤트 참여하기</a>
   </div>
 </body>
 </html>
