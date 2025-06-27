@@ -9,12 +9,19 @@
     body {
       margin: 0;
       font-family: 'Noto Sans KR', sans-serif;
-      background-color: #fff;
+      background-color: #eee;
       color: #111;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 390px;
       height: 100vh;
-      overflow: hidden;
+      background-color: #fff;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .content {
       flex: 1;
@@ -63,7 +70,7 @@
       margin-top: 24px;
     }
     .footer {
-      position: fixed;
+      position: sticky;
       bottom: 0;
       left: 0;
       right: 0;
@@ -87,45 +94,47 @@
   </style>
 </head>
 <body>
-  <!-- 스크롤 가능한 본문 -->
-  <div class="content">
-    <div class="header">이벤트 상세(Mockup)</div>
+  <div class="container">
+    <!-- 스크롤 가능한 본문 -->
+    <div class="content">
+      <div class="header">이벤트 상세(Mockup)</div>
 
-    <div class="image-box">
-      <img src="banner1.png">
+      <div class="image-box">
+        <img src="banner1.png" alt="BMW M5 Touring">
+      </div>
+
+      <div class="title">BMW와 투어비스 셀렉트가 함께하는<br>프리미엄 여행 프로모션</div>
+      <div class="subtitle">럭셔리 드라이브와 5성급 호텔을 함께 경험하세요.</div>
+      <div class="date">2025.07.01 - 2025.08.31</div>
+
+      <div class="promo-banner">
+        <img src="select.png" alt="투어비스 셀렉트 서비스">
+      </div>
+
+      <div class="dummy-text">
+        BMW의 신형 M5 Touring과 함께하는 특별한 여정!<br><br>
+        투어비스 셀렉트의 프리미엄 호텔 숙박과 BMW 시승을 하나의 패키지로 경험할 수 있는 유일한 기회입니다.<br><br>
+
+        ✅ 포함 혜택:<br>
+        - BMW M5 Touring 2박 3일 시승<br>
+        - 투어비스 셀렉트 제공 5성급 호텔 2박 숙박<br>
+        - 호텔 조식 2인, F&B 크레딧 100달러<br>
+        - 얼리 체크인 / 레이트 체크아웃<br>
+        - 컨시어지 1:1 전담 예약<br><br>
+
+        📍 예약 기간: 2025.07.01 ~ 2025.08.31<br>
+        🛎️ 체크인은 투어비스 셀렉트가, 시승은 BMW가 책임집니다.<br><br>
+
+        지금 바로 참여하고, 럭셔리의 정점을 경험해보세요!
+      </div>
+
+      <div style="height: 100px;"></div> <!-- 버튼 가리지 않도록 여유 공간 -->
     </div>
 
-    <div class="title">BMW와 투어비스 셀렉트가 함께하는<br>프리미엄 여행 프로모션</div>
-    <div class="subtitle">럭셔리 드라이브와 5성급 호텔을 함께 경험하세요.</div>
-    <div class="date">2025.07.01 - 2025.08.31</div>
-
-    <div class="promo-banner">
-      <img src="select.png" alt="투어비스 셀렉트 서비스">
+    <!-- 고정된 버튼 영역 -->
+    <div class="footer">
+      <a href="#" class="btn" onclick="chatbotClick(event)">이벤트 참여하기</a>
     </div>
-
-    <div class="dummy-text">
-      BMW의 신형 M5 Touring과 함께하는 특별한 여정!<br><br>
-      투어비스 셀렉트의 프리미엄 호텔 숙박과 BMW 시승을 하나의 패키지로 경험할 수 있는 유일한 기회입니다.<br><br>
-
-      ✅ 포함 혜택:<br>
-      - BMW M5 Touring 2박 3일 시승<br>
-      - 투어비스 셀렉트 제공 5성급 호텔 2박 숙박<br>
-      - 호텔 조식 2인, F&B 크레딧 100달러<br>
-      - 얼리 체크인 / 레이트 체크아웃<br>
-      - 컨시어지 1:1 전담 예약<br><br>
-
-      📍 예약 기간: 2025.07.01 ~ 2025.08.31<br>
-      🛎️ 체크인은 투어비스 셀렉트가, 시승은 BMW가 책임집니다.<br><br>
-
-      지금 바로 참여하고, 럭셔리의 정점을 경험해보세요!
-    </div>
-
-    <div style="height: 100px;"></div> <!-- 버튼 가리지 않도록 여유 공간 -->
-  </div>
-
-  <!-- 고정된 버튼 영역 -->
-  <div class="footer">
-    <a href="#" class="btn" onclick="chatbotClick(event)">이벤트 참여하기</a>
   </div>
 
   <!-- Start of bmwselect Zendesk Widget script -->
