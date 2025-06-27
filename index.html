@@ -87,51 +87,59 @@
   </style>
 </head>
 <body>
+  <!-- 스크롤 가능한 본문 -->
   <div class="content">
     <div class="header">이벤트 상세</div>
 
     <div class="image-box">
-      <!-- BMW 자동차 이미지 -->
       <img src="https://www.bmwusa.com/content/dam/bmwusa/M/M5/MY25/M5-Touring-Overview/m5-touring-overview-01.jpg" alt="BMW M5 Touring">
     </div>
 
-    <div class="title">BMW와 투어비스 셀렉트가 협업한<br>프리미엄 여행 패키지 이벤트</div>
-    <div class="subtitle">럭셔리 드라이브 & 프리미엄 호텔을 함께 경험하세요.</div>
+    <div class="title">BMW와 투어비스 셀렉트가 함께하는<br>프리미엄 여행 프로모션</div>
+    <div class="subtitle">럭셔리 드라이브와 5성급 호텔을 함께 경험하세요.</div>
     <div class="date">2025.07.01 - 2025.08.31</div>
 
     <div class="promo-banner">
-      <!-- 투어비스 셀렉트 서비스 이미지 -->
-      <img src="https://luxury-select.co.kr/_jcr_content/root/container/image.coreimg.jpeg/…" alt="Tourvis Select Luxury">
+      <img src="https://luxury-select.co.kr/_nuxt/img/main-visual-3.8f80b31.png" alt="투어비스 셀렉트 서비스">
     </div>
 
     <div class="dummy-text">
-      BMW의 최신 M5 Touring을 타고 특별히 엄선된 투어비스 셀렉트 럭셔리 호텔로 떠나는 프리미엄 여행 패키지입니다.<br><br>
-      📌 **이벤트 혜택 안내**<br>
-      - BMW M5 Touring 2박 시승 프로그램<br>
+      BMW의 신형 M5 Touring과 함께하는 특별한 여정!<br><br>
+      투어비스 셀렉트의 프리미엄 호텔 숙박과 BMW 시승을 하나의 패키지로 경험할 수 있는 유일한 기회입니다.<br><br>
+
+      ✅ 포함 혜택:<br>
+      - BMW M5 Touring 2박 3일 시승<br>
       - 투어비스 셀렉트 제공 5성급 호텔 2박 숙박<br>
-      - 호텔 전용 $100 식음료 크레딧 제공 :contentReference[oaicite:1]{index=1}<br>
-      - 무료 조식, 얼리 체크인 · 레이트 체크아웃 혜택 :contentReference[oaicite:2]{index=2}<br><br>
-      📅 **예약 가능 기간**: 2025년 7월 1일 ~ 8월 31일<br>
-      🚗 **여행 일정**: BMW 시승 → 호텔 라이프 → 자유 여행 (1박 이상 필수 이용)<br><br>
-      ✔️ 투어비스 셀렉트는 컨시어지 1:1 상담을 통해 예약 진행됩니다 :contentReference[oaicite:3]{index=3}<br>
-      ✔️ 결제는 호텔 체크아웃 시 **후불 방식**, 선결제 부담 없습니다 :contentReference[oaicite:4]{index=4}<br><br>
-      🎉 이 기회를 통해 BMW의 성능과 투어비스 셀렉트의 럭셔리 서비스를 동시에 경험해보세요!
+      - 호텔 조식 2인, F&B 크레딧 100달러<br>
+      - 얼리 체크인 / 레이트 체크아웃<br>
+      - 컨시어지 1:1 전담 예약<br><br>
+
+      📍 예약 기간: 2025.07.01 ~ 2025.08.31<br>
+      🛎️ 체크인은 투어비스 셀렉트가, 시승은 BMW가 책임집니다.<br><br>
+
+      지금 바로 참여하고, 럭셔리의 정점을 경험해보세요!
     </div>
 
-    <div style="height: 100px;"></div>
+    <div style="height: 100px;"></div> <!-- 버튼 가리지 않도록 여유 공간 -->
   </div>
 
+  <!-- 고정된 버튼 영역 -->
   <div class="footer">
-    <a href="#" class="btn" onclick="chatbotClick()">이벤트 참여하기</a>
+    <a href="#" class="btn" onclick="chatbotClick(event)">이벤트 참여하기</a>
   </div>
 
-  <!-- Zendesk 챗봇 위젯 -->
-  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8ec3f23d-e418-4c7b-960e-3708cc88dd6a"></script>
+  <!-- Start of bmwselect Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8ec3f23d-e418-4c7b-960e-3708cc88dd6a"> </script>
+  <!-- End of bmwselect Zendesk Widget script -->
+
   <script>
-    zE('messenger','close');
+    // 페이지 로드 시 챗봇 닫기
+    zE('messenger', 'close');
+
+    // 챗봇 클릭 시
     function chatbotClick(event) {
       event.preventDefault();
-      zE('messenger','open');
+      zE('messenger', 'open');
     }
   </script>
 </body>
