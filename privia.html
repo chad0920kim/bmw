@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zendesk 위젯 테스트 페이지</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        h1 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .info-box {
+            background: #f7fafc;
+            border-left: 4px solid #4299e1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .instruction {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .widget-info {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎧 Zendesk 고객지원 위젯</h1>
+        
+        <div class="info-box">
+            <h3>📋 페이지 정보</h3>
+            <p>이 페이지에는 Zendesk 고객지원 위젯이 통합되어 있습니다. 페이지 우측 하단에 채팅 위젯이 나타날 예정입니다.</p>
+        </div>
+        
+        <div class="instruction">
+            <h3>💡 사용 방법</h3>
+            <ul>
+                <li>페이지가 완전히 로드되면 우측 하단에 Zendesk 위젯이 나타납니다</li>
+                <li>위젯을 클릭하여 고객지원팀과 채팅을 시작할 수 있습니다</li>
+                <li>위젯이 보이지 않는다면 페이지를 새로고침해보세요</li>
+            </ul>
+        </div>
+        
+        <div class="widget-info">
+            <h3>🔧 위젯 정보</h3>
+            <p><strong>위젯 키:</strong> <code>367e8151-b39f-4afe-b412-c3ffaebf4280</code></p>
+            <p><strong>스크립트 소스:</strong> <code>https://static.zdassets.com/ekr/snippet.js</code></p>
+        </div>
+        
+        <div class="info-box">
+            <h3>📝 테스트 내용</h3>
+            <p>이 페이지는 Zendesk 위젯의 동작을 테스트하기 위한 샘플 페이지입니다. 
+            실제 웹사이트에 통합할 때는 이 스크립트를 해당 페이지의 <code>&lt;/body&gt;</code> 태그 직전에 추가하시면 됩니다.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Zendesk Widget Integration Test Page</p>
+        </div>
+    </div>
+
+    <!-- Start of tsmb1 Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=367e8151-b39f-4afe-b412-c3ffaebf4280">
+    </script>
+    <!-- End of tsmb1 Zendesk Widget script -->
+</body>
+</html>
