@@ -12,13 +12,12 @@
             background: linear-gradient(135deg, #ff6b9d, #ffc3d7);
             min-height: 100vh;
             padding: 20px;
+            display: flex;
+            justify-content: center;
         }
-        .header {
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            padding: 0 4px;
+        .main-container {
+            width: 100%;
+            max-width: 600px;
         }
         .hotel-card {
             background: white;
@@ -70,11 +69,6 @@
             line-height: 1.4;
             margin-bottom: 8px;
         }
-        .hotel-amenities {
-            font-size: 11px;
-            color: #999;
-            line-height: 1.3;
-        }
         .price-section {
             text-align: right;
             display: flex;
@@ -105,47 +99,37 @@
             cursor: pointer;
             white-space: nowrap;
         }
-        .promo-text {
-            background: #fff8f0;
-            padding: 12px;
-            font-size: 11px;
-            color: #e67e22;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-        }
     </style>
 </head>
 <body>
-
-    
-    <div class="hotel-card">
-        <div class="hotel-content">
-            <div class="hotel-image">
-                Hotel<br>Image
-            </div>
-            
-            <div class="hotel-info">
-                <div class="hotel-tag">[호텔 당일 결제]</div>
-                <div class="hotel-name">프리비아 럭셔리 호텔</div>
-                <div class="hotel-details">
-                    ⭐ 2025.07.23 체크인 예약확정 ⚡<br>
-                    🛏️ 2인 주니어스위트<br>
-                    🍽️ 조식 2인 제공<br>
-                    💰 $100 F&B 크레딧 제공<br>
-                    🔝 객실 무료 업그레이드 (현장 가능 시)<br>
-                    ⏰ 얼리 체크인 제공 (현장 가능 시)<br>
-                    🌙 레이트 체크아웃 제공 (현장 가능 시)
+    <div class="main-container">
+        <div class="hotel-card">
+            <div class="hotel-content">
+                <div class="hotel-image">
+                    Hotel<br>Image
                 </div>
-
-            </div>
-            
-            <div class="price-section">
-                <div class="price-label">1박 예상결제</div>
-                <div class="price">450,000원 ~</div>
-                <button class="chat-btn" onclick="chatbotClick(event)">문의 및 상담</button>
+                
+                <div class="hotel-info">
+                    <div class="hotel-tag">[호텔 당일 결제]</div>
+                    <div class="hotel-name">프리비아 럭셔리 호텔</div>
+                    <div class="hotel-details">
+                        ⭐ 2025.07.23 체크인 예약확정 ⚡<br>
+                        🛏️ 2인 주니어스위트<br>
+                        🍽️ 조식 2인 제공<br>
+                        💰 $100 F&B 크레딧 제공<br>
+                        🔝 객실 무료 업그레이드 (현장 가능 시)<br>
+                        ⏰ 얼리 체크인 제공 (현장 가능 시)<br>
+                        🌙 레이트 체크아웃 제공 (현장 가능 시)
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <div class="price-label">1박 예상결제</div>
+                    <div class="price">450,000원 ~</div>
+                    <button class="chat-btn" onclick="chatbotClick(event)">문의 및 상담</button>
+                </div>
             </div>
         </div>
-
     </div>
 
     <!-- Start of tsmb1 Zendesk Widget script -->
