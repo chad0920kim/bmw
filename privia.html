@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zendesk 위젯 테스트 페이지</title>
+    <title>프리비아 럭셔리 호텔 위젯 표시 샘플</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,17 +22,17 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-top: 20px;
+            text-align: center;
         }
         
         h1 {
             color: #4a5568;
-            text-align: center;
             margin-bottom: 30px;
             font-size: 2.5em;
             font-weight: 300;
         }
         
-        .info-box {
+        .info {
             background: #f7fafc;
             border-left: 4px solid #4299e1;
             padding: 20px;
@@ -40,143 +40,28 @@
             border-radius: 5px;
         }
         
-        .instruction {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        
-        .widget-info {
-            background: #e6fffa;
-            border: 1px solid #81e6d9;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        
-        code {
-            background: #f1f5f9;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        
         .footer {
-            text-align: center;
             margin-top: 40px;
             color: #718096;
             font-size: 0.9em;
-        }
-        
-        /* Zendesk 위젯 강제 표시 */
-        #webWidget {
-            display: block !important;
-            visibility: visible !important;
-            z-index: 999999 !important;
-        }
-        
-        iframe[id*="webWidget"] {
-            display: block !important;
-            visibility: visible !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎧 Zendesk 고객지원 위젯</h1>
+        <h1>프리비아 럭셔리 호텔 위젯 표시 샘플</h1>
         
-        <div class="info-box">
-            <h3>📋 페이지 정보</h3>
-            <p>이 페이지에는 Zendesk 고객지원 위젯이 통합되어 있습니다. 페이지 우측 하단에 채팅 위젯이 나타날 예정입니다.</p>
+        <div class="info">
+            <p>Zendesk 위젯이 우측 하단에 표시됩니다.</p>
         </div>
-        
-        <div class="instruction">
-            <h3>💡 사용 방법</h3>
-            <ul>
-                <li>페이지가 완전히 로드되면 우측 하단에 Zendesk 위젯이 나타납니다</li>
-                <li>위젯을 클릭하여 고객지원팀과 채팅을 시작할 수 있습니다</li>
-                <li>위젯이 보이지 않는다면 페이지를 새로고침해보세요</li>
-            </ul>
-        </div>
-        
-        <div class="widget-info">
-            <h3>🔧 위젝 정보</h3>
-            <p><strong>위젯 키:</strong> <code>367e8151-b39f-4afe-b412-c3ffaebf4280</code></p>
-            <p><strong>스크립트 소스:</strong> <code>https://static.zdassets.com/ekr/snippet.js</code></p>
-            <div id="widget-status" style="margin-top: 10px; padding: 10px; background: #f0f9ff; border-radius: 5px;">
-                <strong>위젯 상태:</strong> <span id="status-text">로딩 중...</span>
-            </div>
-        </div>
-        
-        <div class="info-box">
-            <h3>📝 테스트 내용</h3>
-            <p>이 페이지는 Zendesk 위젯의 동작을 테스트하기 위한 샘플 페이지입니다. 
-            실제 웹사이트에 통합할 때는 이 스크립트를 해당 페이지의 <code>&lt;/body&gt;</code> 태그 직전에 추가하시면 됩니다.</p>
-        </div>
-        
-        <div id="status"></div>
         
         <div class="footer">
-            <p>Zendesk Widget Integration Test Page</p>
+            <p>Zendesk Widget Sample</p>
         </div>
     </div>
 
     <!-- Start of tsmb1 Zendesk Widget script -->
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=367e8151-b39f-4afe-b412-c3ffaebf4280"></script>
     <!-- End of tsmb1 Zendesk Widget script -->
-    
-    <script>
-        // Zendesk 위젯 로딩 상태 확인
-        window.addEventListener('load', function() {
-            console.log('페이지 로드 완료');
-            document.getElementById('status-text').textContent = '페이지 로드 완료, 위젯 확인 중...';
-            
-            // 위젯 로딩 확인
-            var checkWidget = setInterval(function() {
-                if (window.zE) {
-                    console.log('Zendesk 위젯 로드됨');
-                    document.getElementById('status-text').textContent = '✅ 위젯 로드됨';
-                    document.getElementById('widget-status').style.background = '#ecfdf5';
-                    clearInterval(checkWidget);
-                    
-                    // 위젯을 명시적으로 보이게 설정
-                    try {
-                        window.zE('widget', 'show');
-                        window.zE('widget', 'open');
-                        console.log('위젯 표시 명령 실행됨');
-                        document.getElementById('status-text').textContent = '✅ 위젯 활성화됨 (우하단 확인)';
-                    } catch(e) {
-                        console.log('위젯 표시 오류:', e);
-                        document.getElementById('status-text').textContent = '⚠️ 위젯 표시 오류: ' + e.message;
-                    }
-                } else {
-                    console.log('위젯 로딩 대기 중...');
-                }
-            }, 1000);
-            
-            // 10초 후에도 로드되지 않으면 체크 중단
-            setTimeout(function() {
-                clearInterval(checkWidget);
-                if (!window.zE) {
-                    console.log('위젯 로드 실패 - 키나 설정을 확인해주세요');
-                    document.getElementById('status-text').textContent = '❌ 위젯 로드 실패';
-                    document.getElementById('widget-status').style.background = '#fef2f2';
-                    document.getElementById('status').innerHTML = 
-                        '<div style="background:#ffebee; color:#c62828; padding:10px; border-radius:5px; margin:20px 0;">' +
-                        '⚠️ Zendesk 위젯을 로드할 수 없습니다. 위젯 키나 설정을 확인해주세요.</div>';
-                }
-            }, 10000);
-        });
-        
-        // 추가 디버깅 정보
-        window.addEventListener('message', function(event) {
-            if (event.origin === 'https://widget-mediator.zopim.com' || 
-                event.origin === 'https://static.zdassets.com') {
-                console.log('Zendesk 메시지 받음:', event.data);
-            }
-        });
-    </script>
 </body>
 </html>
