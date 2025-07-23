@@ -69,6 +69,18 @@
             color: #718096;
             font-size: 0.9em;
         }
+        
+        /* Zendesk 위젯 강제 표시 */
+        #webWidget {
+            display: block !important;
+            visibility: visible !important;
+            z-index: 999999 !important;
+        }
+        
+        iframe[id*="webWidget"] {
+            display: block !important;
+            visibility: visible !important;
+        }
     </style>
 </head>
 <body>
@@ -90,9 +102,12 @@
         </div>
         
         <div class="widget-info">
-            <h3>🔧 위젯 정보</h3>
+            <h3>🔧 위젝 정보</h3>
             <p><strong>위젯 키:</strong> <code>367e8151-b39f-4afe-b412-c3ffaebf4280</code></p>
             <p><strong>스크립트 소스:</strong> <code>https://static.zdassets.com/ekr/snippet.js</code></p>
+            <div id="widget-status" style="margin-top: 10px; padding: 10px; background: #f0f9ff; border-radius: 5px;">
+                <strong>위젯 상태:</strong> <span id="status-text">로딩 중...</span>
+            </div>
         </div>
         
         <div class="info-box">
@@ -101,14 +116,67 @@
             실제 웹사이트에 통합할 때는 이 스크립트를 해당 페이지의 <code>&lt;/body&gt;</code> 태그 직전에 추가하시면 됩니다.</p>
         </div>
         
+        <div id="status"></div>
+        
         <div class="footer">
             <p>Zendesk Widget Integration Test Page</p>
         </div>
     </div>
 
     <!-- Start of tsmb1 Zendesk Widget script -->
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=367e8151-b39f-4afe-b412-c3ffaebf4280">
-    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=367e8151-b39f-4afe-b412-c3ffaebf4280"></script>
     <!-- End of tsmb1 Zendesk Widget script -->
+    
+    <script>
+        // Zendesk 위젯 로딩 상태 확인
+        window.addEventListener('load', function() {
+            console.log('페이지 로드 완료');
+            document.getElementById('status-text').textContent = '페이지 로드 완료, 위젯 확인 중...';
+            
+            // 위젯 로딩 확인
+            var checkWidget = setInterval(function() {
+                if (window.zE) {
+                    console.log('Zendesk 위젯 로드됨');
+                    document.getElementById('status-text').textContent = '✅ 위젯 로드됨';
+                    document.getElementById('widget-status').style.background = '#ecfdf5';
+                    clearInterval(checkWidget);
+                    
+                    // 위젯을 명시적으로 보이게 설정
+                    try {
+                        window.zE('widget', 'show');
+                        window.zE('widget', 'open');
+                        console.log('위젯 표시 명령 실행됨');
+                        document.getElementById('status-text').textContent = '✅ 위젯 활성화됨 (우하단 확인)';
+                    } catch(e) {
+                        console.log('위젯 표시 오류:', e);
+                        document.getElementById('status-text').textContent = '⚠️ 위젯 표시 오류: ' + e.message;
+                    }
+                } else {
+                    console.log('위젯 로딩 대기 중...');
+                }
+            }, 1000);
+            
+            // 10초 후에도 로드되지 않으면 체크 중단
+            setTimeout(function() {
+                clearInterval(checkWidget);
+                if (!window.zE) {
+                    console.log('위젯 로드 실패 - 키나 설정을 확인해주세요');
+                    document.getElementById('status-text').textContent = '❌ 위젯 로드 실패';
+                    document.getElementById('widget-status').style.background = '#fef2f2';
+                    document.getElementById('status').innerHTML = 
+                        '<div style="background:#ffebee; color:#c62828; padding:10px; border-radius:5px; margin:20px 0;">' +
+                        '⚠️ Zendesk 위젯을 로드할 수 없습니다. 위젯 키나 설정을 확인해주세요.</div>';
+                }
+            }, 10000);
+        });
+        
+        // 추가 디버깅 정보
+        window.addEventListener('message', function(event) {
+            if (event.origin === 'https://widget-mediator.zopim.com' || 
+                event.origin === 'https://static.zdassets.com') {
+                console.log('Zendesk 메시지 받음:', event.data);
+            }
+        });
+    </script>
 </body>
 </html>
