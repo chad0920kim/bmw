@@ -89,6 +89,7 @@
             margin-bottom: 12px;
         }
         .chat-btn {
+            background: #333;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -97,79 +98,71 @@
             font-weight: 600;
             cursor: pointer;
             white-space: nowrap;
-            margin-bottom: 4px;
-        }
-        .chat-btn.primary {
-            background: #333;
-        }
-        .chat-btn.secondary {
-            background: #007bff;
         }
         
-        /* 챗봇 선택 모달 */
-        .modal {
-            display: none;
+        /* 프리비아 헬프 플로팅 버튼 */
+        .privia-help-btn {
             position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 12px;
-            width: 320px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .modal h3 {
-            margin-top: 0;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .modal-btn {
-            background: #007bff;
-            color: white;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             border: none;
-            padding: 12px 20px;
-            margin: 8px;
-            border-radius: 6px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 14px;
-            width: 200px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .modal-btn:hover {
-            background: #0056b3;
-        }
-        .modal-btn.primary {
-            background: #333;
-        }
-        .modal-btn.primary:hover {
-            background: #555;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 20px;
-        }
-        .close:hover {
-            color: black;
-        }
-        .widget-description {
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
             font-size: 12px;
-            color: #666;
-            margin-bottom: 10px;
-            padding: 0 10px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.1;
+        }
+        
+        .privia-help-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+        }
+        
+        .privia-help-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 툴팁 */
+        .privia-help-btn::before {
+            content: "프리비아 헬프";
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .privia-help-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* 반응형 */
+        @media (max-width: 480px) {
+            .privia-help-btn {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -198,25 +191,16 @@
                 <div class="price-section">
                     <div class="price-label">1박 예상결제</div>
                     <div class="price">450,000원 ~</div>
-                    <button class="chat-btn primary" onclick="openModal()">문의 및 상담</button>
+                    <button class="chat-btn" onclick="openGeneralChat()">문의 및 상담</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 챗봇 선택 모달 -->
-    <div id="chatModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>상담 방식을 선택해주세요</h3>
-            
-            <div class="widget-description">일반 예약 문의 및 호텔 상담</div>
-            <button class="modal-btn primary" onclick="switchWidget('tsmb1')">일반 상담</button>
-            
-            <div class="widget-description">프리비아 전용 고객지원</div>
-            <button class="modal-btn" onclick="switchWidget('priviahelp')">프리비아 헬프</button>
-        </div>
-    </div>
+    <!-- 프리비아 헬프 플로팅 버튼 -->
+    <button class="privia-help-btn" onclick="openPriviaHelp()">
+        프리비아<br>헬프
+    </button>
 
     <!-- 동적으로 위젯을 로드하는 스크립트 -->
     <script>
@@ -257,7 +241,7 @@
                 try {
                     zE('messenger', 'close');
                 } catch (e) {
-                    console.log('위젯 정리 중 오류:', e);
+                    console.log('위젯 정리 중:', e);
                 }
                 delete window.zE;
             }
@@ -282,12 +266,10 @@
             document.head.appendChild(widgetScript);
         }
         
-        // 위젯 전환 및 열기 함수
-        function switchWidget(widgetType) {
-            closeModal();
-            
-            if (currentWidgetType !== widgetType) {
-                loadWidget(widgetType);
+        // 일반 상담 (기존 tsmb1 위젯)
+        function openGeneralChat() {
+            if (currentWidgetType !== 'tsmb1') {
+                loadWidget('tsmb1');
                 
                 // 위젯이 로드될 때까지 잠시 대기 후 열기
                 setTimeout(function() {
@@ -303,20 +285,22 @@
             }
         }
         
-        // 모달 관련 함수들
-        function openModal() {
-            document.getElementById('chatModal').style.display = 'block';
-        }
-        
-        function closeModal() {
-            document.getElementById('chatModal').style.display = 'none';
-        }
-        
-        // 모달 외부 클릭 시 닫기
-        window.onclick = function(event) {
-            const modal = document.getElementById('chatModal');
-            if (event.target == modal) {
-                closeModal();
+        // 프리비아 헬프
+        function openPriviaHelp() {
+            if (currentWidgetType !== 'priviahelp') {
+                loadWidget('priviahelp');
+                
+                // 위젯이 로드될 때까지 잠시 대기 후 열기
+                setTimeout(function() {
+                    if (window.zE) {
+                        zE('messenger', 'open');
+                    }
+                }, 2000);
+            } else {
+                // 이미 로드된 위젯이면 바로 열기
+                if (window.zE) {
+                    zE('messenger', 'open');
+                }
             }
         }
     </script>
