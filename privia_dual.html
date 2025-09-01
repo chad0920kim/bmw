@@ -202,106 +202,32 @@
         프리비아<br>헬프
     </button>
 
-    <!-- 동적으로 위젯을 로드하는 스크립트 -->
+    <!-- Start of tsmb1 Zendesk Widget script (일반 상담) -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=a5bd1117-3f49-40e3-b14a-75e548ceed48"></script>
+    <!-- End of tsmb1 Zendesk Widget script -->
+    
     <script>
-        let currentWidgetType = null;
-        let widgetScript = null;
-        
-        // 위젯 설정
-        const widgetConfigs = {
-            'tsmb1': {
-                key: 'a5bd1117-3f49-40e3-b14a-75e548ceed48',
-                name: '일반 상담'
-            },
-            'priviahelp': {
-                key: '907304bb-1899-4d37-9eac-dea9900b6b7d',
-                name: '프리비아 헬프'
-            }
-        };
-        
-        // 페이지 로드 시 기본 위젯 로드 (tsmb1)
+        // 페이지 로드 시 챗봇 닫기
         window.addEventListener('load', function() {
-            loadWidget('tsmb1');
-        });
-        
-        // 위젯 로드 함수
-        function loadWidget(widgetType) {
-            if (currentWidgetType === widgetType) {
-                return; // 이미 같은 위젯이 로드되어 있으면 스킵
-            }
-            
-            // 기존 위젯 제거
-            if (widgetScript) {
-                document.head.removeChild(widgetScript);
-                widgetScript = null;
-            }
-            
-            // 기존 zE 객체 정리
-            if (window.zE) {
-                try {
+            setTimeout(function() {
+                if (window.zE) {
                     zE('messenger', 'close');
-                } catch (e) {
-                    console.log('위젯 정리 중:', e);
                 }
-                delete window.zE;
-            }
-            
-            // 새 위젯 스크립트 생성 및 로드
-            widgetScript = document.createElement('script');
-            widgetScript.id = 'ze-snippet';
-            widgetScript.src = `https://static.zdassets.com/ekr/snippet.js?key=${widgetConfigs[widgetType].key}`;
-            
-            widgetScript.onload = function() {
-                currentWidgetType = widgetType;
-                console.log(`${widgetConfigs[widgetType].name} 위젯 로드 완료`);
-                
-                // 위젯 로드 후 자동으로 닫기
-                setTimeout(function() {
-                    if (window.zE) {
-                        zE('messenger', 'close');
-                    }
-                }, 1000);
-            };
-            
-            document.head.appendChild(widgetScript);
-        }
+            }, 1000);
+        });
         
         // 일반 상담 (기존 tsmb1 위젯)
         function openGeneralChat() {
-            if (currentWidgetType !== 'tsmb1') {
-                loadWidget('tsmb1');
-                
-                // 위젯이 로드될 때까지 잠시 대기 후 열기
-                setTimeout(function() {
-                    if (window.zE) {
-                        zE('messenger', 'open');
-                    }
-                }, 2000);
-            } else {
-                // 이미 로드된 위젯이면 바로 열기
-                if (window.zE) {
-                    zE('messenger', 'open');
-                }
+            if (window.zE) {
+                zE('messenger', 'open');
             }
         }
         
-        // 프리비아 헬프
+        // 프리비아 헬프 (새 창으로 열기)
         function openPriviaHelp() {
-            if (currentWidgetType !== 'priviahelp') {
-                loadWidget('priviahelp');
-                
-                // 위젯이 로드될 때까지 잠시 대기 후 열기
-                setTimeout(function() {
-                    if (window.zE) {
-                        zE('messenger', 'open');
-                    }
-                }, 2000);
-            } else {
-                // 이미 로드된 위젯이면 바로 열기
-                if (window.zE) {
-                    zE('messenger', 'open');
-                }
-            }
+            // 프리비아 헬프를 새 창으로 열기
+            const priviaHelpUrl = 'https://priviahelp.zendesk.com/hc/ko';
+            window.open(priviaHelpUrl, 'priviaHelp', 'width=400,height=600,scrollbars=yes,resizable=yes');
         }
     </script>
 </body>
