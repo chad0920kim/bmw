@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리비아 럭셔리 호텔 위젯 표시 샘플</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d, #ffc3d7);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 600px;
+        }
+        .hotel-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .hotel-content {
+            display: flex;
+            padding: 16px;
+            gap: 16px;
+        }
+        .hotel-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
+        .hotel-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .hotel-tag {
+            color: #007bff;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .hotel-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .hotel-details {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .price-section {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            min-width: 120px;
+        }
+        .price-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .chat-btn {
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            margin-bottom: 4px;
+        }
+        .chat-btn.primary {
+            background: #333;
+        }
+        .chat-btn.secondary {
+            background: #007bff;
+        }
+        
+        /* 챗봇 선택 모달 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .modal h3 {
+            margin-top: 0;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .modal-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .modal-btn:hover {
+            background: #0056b3;
+        }
+        .modal-btn.primary {
+            background: #333;
+        }
+        .modal-btn.primary:hover {
+            background: #555;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+        .close:hover {
+            color: black;
+        }
+        .widget-description {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="hotel-card">
+            <div class="hotel-content">
+                <div class="hotel-image">
+                    Hotel<br>Image
+                </div>
+                
+                <div class="hotel-info">
+                    <div class="hotel-tag">[호텔 당일 결제]</div>
+                    <div class="hotel-name">프리비아 럭셔리 호텔</div>
+                    <div class="hotel-details">
+                        ⭐ 2025.07.23 체크인 예약확정 ⚡<br>
+                        🛏️ 2인 주니어스위트<br>
+                        🍽️ 조식 2인 제공<br>
+                        💰 $100 F&B 크레딧 제공<br>
+                        🔝 객실 무료 업그레이드 (현장 가능 시)<br>
+                        ⏰ 얼리 체크인 제공 (현장 가능 시)<br>
+                        🌙 레이트 체크아웃 제공 (현장 가능 시)
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <div class="price-label">1박 예상결제</div>
+                    <div class="price">450,000원 ~</div>
+                    <button class="chat-btn primary" onclick="openModal()">문의 및 상담</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 챗봇 선택 모달 -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>상담 방식을 선택해주세요</h3>
+            
+            <div class="widget-description">일반 예약 문의 및 호텔 상담</div>
+            <button class="modal-btn primary" onclick="switchWidget('tsmb1')">일반 상담</button>
+            
+            <div class="widget-description">프리비아 전용 고객지원</div>
+            <button class="modal-btn" onclick="switchWidget('priviahelp')">프리비아 헬프</button>
+        </div>
+    </div>
+
+    <!-- 동적으로 위젯을 로드하는 스크립트 -->
+    <script>
+        let currentWidgetType = null;
+        let widgetScript = null;
+        
+        // 위젯 설정
+        const widgetConfigs = {
+            'tsmb1': {
+                key: 'a5bd1117-3f49-40e3-b14a-75e548ceed48',
+                name: '일반 상담'
+            },
+            'priviahelp': {
+                key: '907304bb-1899-4d37-9eac-dea9900b6b7d',
+                name: '프리비아 헬프'
+            }
+        };
+        
+        // 페이지 로드 시 기본 위젯 로드 (tsmb1)
+        window.addEventListener('load', function() {
+            loadWidget('tsmb1');
+        });
+        
+        // 위젯 로드 함수
+        function loadWidget(widgetType) {
+            if (currentWidgetType === widgetType) {
+                return; // 이미 같은 위젯이 로드되어 있으면 스킵
+            }
+            
+            // 기존 위젯 제거
+            if (widgetScript) {
+                document.head.removeChild(widgetScript);
+                widgetScript = null;
+            }
+            
+            // 기존 zE 객체 정리
+            if (window.zE) {
+                try {
+                    zE('messenger', 'close');
+                } catch (e) {
+                    console.log('위젯 정리 중 오류:', e);
+                }
+                delete window.zE;
+            }
+            
+            // 새 위젯 스크립트 생성 및 로드
+            widgetScript = document.createElement('script');
+            widgetScript.id = 'ze-snippet';
+            widgetScript.src = `https://static.zdassets.com/ekr/snippet.js?key=${widgetConfigs[widgetType].key}`;
+            
+            widgetScript.onload = function() {
+                currentWidgetType = widgetType;
+                console.log(`${widgetConfigs[widgetType].name} 위젯 로드 완료`);
+                
+                // 위젯 로드 후 자동으로 닫기
+                setTimeout(function() {
+                    if (window.zE) {
+                        zE('messenger', 'close');
+                    }
+                }, 1000);
+            };
+            
+            document.head.appendChild(widgetScript);
+        }
+        
+        // 위젯 전환 및 열기 함수
+        function switchWidget(widgetType) {
+            closeModal();
+            
+            if (currentWidgetType !== widgetType) {
+                loadWidget(widgetType);
+                
+                // 위젯이 로드될 때까지 잠시 대기 후 열기
+                setTimeout(function() {
+                    if (window.zE) {
+                        zE('messenger', 'open');
+                    }
+                }, 2000);
+            } else {
+                // 이미 로드된 위젯이면 바로 열기
+                if (window.zE) {
+                    zE('messenger', 'open');
+                }
+            }
+        }
+        
+        // 모달 관련 함수들
+        function openModal() {
+            document.getElementById('chatModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('chatModal').style.display = 'none';
+        }
+        
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('chatModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
